@@ -7,7 +7,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/eacdy/spring-cloud-study/
+          uri: https://github.com/tracyhappy/spring-cloud-study.git
           search-paths: config-repo
           username: 
           password: 

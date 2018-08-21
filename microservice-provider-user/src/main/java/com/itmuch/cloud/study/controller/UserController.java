@@ -1,6 +1,7 @@
 package com.itmuch.cloud.study.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +19,15 @@ import com.itmuch.cloud.study.repository.UserRepository;
  */
 @RestController
 public class UserController {
+	
   @Autowired
   private DiscoveryClient discoveryClient;
+  
   @Autowired
   private UserRepository userRepository;
+  
+  @Value("${server.port}")
+  String port;
 
   /**
    * 注：@GetMapping("/{id}")是spring 4.3的新注解等价于：
@@ -32,6 +38,9 @@ public class UserController {
    */
   @GetMapping("/{id}")
   public User findById(@PathVariable Long id) {
+	System.out.println("=================================");
+	System.out.println("I am from port : " + port);
+	System.out.println("=================================");
     User findOne = this.userRepository.findOne(id);
     return findOne;
   }
