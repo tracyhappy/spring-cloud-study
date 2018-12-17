@@ -9,6 +9,12 @@ import org.springframework.web.client.RestTemplate;
 import com.itmuch.cloud.study.user.entity.User;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
+/**
+ *   这里代码里讲的是熔断。
+ *   另外其实还有服务降级，前提是比如积分服务已经熔断,不能成功访问了。
+ *   咱们就来个降级：每次调用积分服务，你就在数据库里记录一条消息，说给某某用户增加了多少积分，因为积分服务挂了，导致没增加成功！这样等积分服务恢复了，你可以根据这些记录手工加一下积分。这个过程，就是所谓的降级。
+ *
+ */
 @Service
 public class RibbonHystrixService {
   @Autowired

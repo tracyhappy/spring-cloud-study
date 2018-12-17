@@ -6,6 +6,14 @@ import org.springframework.web.client.RestTemplate;
 
 import com.itmuch.cloud.study.user.entity.User;
 
+/**
+ *  Ribbon的负载均衡默认使用的是轮询算法
+ *  
+ *
+ */
+
+
+
 @Service
 public class RibbonService {
   @Autowired
